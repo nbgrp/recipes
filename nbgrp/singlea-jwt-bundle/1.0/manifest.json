@@ -1,0 +1,11 @@
+{
+    "bundles": {
+        "SingleA\\Bundles\\Jwt\\SingleaJwtBundle": ["all"]
+    },
+    "copy-from-recipe": {
+        "config/": "%CONFIG_DIR%/"
+    },
+    "env": {
+        "SINGLEA_JWT_ISSUER": "https://sso.example.com/"
+    }
+}

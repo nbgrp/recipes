@@ -1,0 +1,1 @@
+  * SingleA JWT Fetcher Bundle is ready.

@@ -1,0 +1,1 @@
+  * SingleA JWT Bundle is ready.

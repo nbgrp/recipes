@@ -1,0 +1,4 @@
+singlea_jwt:
+    #config_default_ttl: 600         # Default value of a generated JWT lifetime which using for client tokenizer config creation
+
+    issuer: '%env(SINGLEA_JWT_ISSUER)%'  # The 'iss' JWT claim value (unless another value is explicitly specified in the payload)

@@ -1,0 +1,2 @@
+singlea_json_fetcher:
+    #https_only: true  # "false" allows fetching payload from a http-based (unsecure) endpoint

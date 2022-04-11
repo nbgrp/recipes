@@ -1,0 +1,1 @@
+  * SingleA JSON Fetcher Bundle is ready.

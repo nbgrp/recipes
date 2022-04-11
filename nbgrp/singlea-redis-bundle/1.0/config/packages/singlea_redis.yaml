@@ -1,0 +1,11 @@
+# See https://github.com/nbgrp/singlea-redis-bundle#readme for detailed configuration.
+singlea_redis:
+    #client_last_access_key: 'singlea:last-access'  # a hash key that is used to store the client's last access time
+    #snc_redis_client: 'default'
+
+#    config_managers:  # config managers are used to save/load client feature configs in/from the storage
+#        signature:    # this key does not matter, except that it must be a valid YAML map key name
+#
+#            key: 'singlea:signature'                           # a hash key that is used to store the client feature config
+#            config_marshaller: 'singlea.signature_marshaller'  # a feature config marshaller service id (must be defined in services.yaml)
+#            required: true                                     # specifies whether the feature is required

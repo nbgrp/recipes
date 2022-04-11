@@ -1,0 +1,11 @@
+{
+    "bundles": {
+        "SingleA\\Bundles\\Singlea\\SingleaBundle": ["all"]
+    },
+    "copy-from-recipe": {
+        "config/": "%CONFIG_DIR%/"
+    },
+    "env": {
+        "SINGLEA_TICKET_DOMAIN": "example.com"
+    }
+}
