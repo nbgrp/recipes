@@ -1,0 +1,30 @@
+{
+    "manifests": {
+        "nbgrp/singlea-json-fetcher-bundle": {
+            "manifest": {
+                "bundles": {
+                    "SingleA\\Bundles\\JsonFetcher\\SingleaJsonFetcherBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                },
+                "post-install-output": [
+                    "  * SingleA JSON Fetcher Bundle is ready."
+                ]
+            },
+            "files": {
+                "config/packages/singlea_json_fetcher.yaml": {
+                    "contents": [
+                        "singlea_json_fetcher:",
+                        "    #https_only: true  # \"false\" allows fetching payload from a http-based (unsecure) endpoint",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "c2a826b20eb98dc2445ac05090d82b035f6cd2ac"
+        }
+    }
+}

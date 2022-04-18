@@ -1,0 +1,35 @@
+{
+    "manifests": {
+        "nbgrp/singlea-jwt-bundle": {
+            "manifest": {
+                "bundles": {
+                    "SingleA\\Bundles\\Jwt\\SingleaJwtBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                },
+                "env": {
+                    "SINGLEA_JWT_ISSUER": "https://sso.example.com/"
+                },
+                "post-install-output": [
+                    "  * SingleA JWT Bundle is ready."
+                ]
+            },
+            "files": {
+                "config/packages/singlea_jwt.yaml": {
+                    "contents": [
+                        "singlea_jwt:",
+                        "    #config_default_ttl: 600         # Default value of a generated JWT lifetime which using for client tokenizer config creation",
+                        "",
+                        "    issuer: '%env(SINGLEA_JWT_ISSUER)%'  # The 'iss' JWT claim value (unless another value is explicitly specified in the payload)",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "c2a20522a7e95aa99b65a89b301557b732883425"
+        }
+    }
+}

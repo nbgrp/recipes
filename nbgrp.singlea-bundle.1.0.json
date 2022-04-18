@@ -1,0 +1,126 @@
+{
+    "manifests": {
+        "nbgrp/singlea-bundle": {
+            "manifest": {
+                "bundles": {
+                    "SingleA\\Bundles\\Singlea\\SingleaBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                },
+                "env": {
+                    "SINGLEA_TICKET_DOMAIN": "example.com"
+                },
+                "post-install-output": [
+                    "  * SingleA Bundle is ready."
+                ]
+            },
+            "files": {
+                "config/packages/singlea.yaml": {
+                    "contents": [
+                        "# See https://github.com/nbgrp/singlea#readme for detailed configuration.",
+                        "singlea:",
+                        "    client:",
+                        "        #id_query_parameter: 'client_id'",
+                        "        #secret_query_parameter: 'secret'",
+                        "",
+                        "        #",
+                        "        # The following parameters must contain a comma separated list of IP addresses",
+                        "        # or subnets (in the same way as it works for security.access_control items,",
+                        "        # see https://symfony.com/doc/current/security/access_control.html).",
+                        "        #",
+                        "        # Similar to setup trusted proxies, \"REMOTE_ADDR\" value might be used to allow requests",
+                        "        # from any address. It is especially useful when you use environment variables to set these",
+                        "        # parameters.",
+                        "        #",
+                        "",
+                        "        #trusted_clients: 'REMOTE_ADDR'                # used by the \"is_valid_client_ip()\" expression function",
+                        "        #trusted_registrars: '127.0.0.1,172.16.0.0/8'  # used by the \"is_valid_registration_ip()\" expression function",
+                        "",
+                        "        #",
+                        "        # To be able to restrict registration using tickets, the RegistrationTicketManagerInterface",
+                        "        # must be implemented and defined in services.yaml.",
+                        "        #",
+                        "",
+                        "        #registration_ticket_header: 'X-Registration-Ticket'  # used by the \"is_valid_registration_ticket()\" expression function",
+                        "",
+                        "",
+                        "    #",
+                        "    # Tickets allow you to organize truly *single* sign-on service with additional protection of user data",
+                        "    # via encryption, using the ticket as a secret. The ticket is given to the user through the cookie",
+                        "    # and is included in subsequent requests from the SingleA client.",
+                        "    #",
+                        "",
+                        "    ticket:",
+                        "        #header: 'X-Ticket'                      # the name of the request HTTP header that contains the ticket value,",
+                        "                                                 # which should be set by the SingleA client",
+                        "        #cookie_name: 'tkt'                      # ticket cookie name",
+                        "        #ttl: 3600                               # ticket cookie Max-Age",
+                        "        domain: '%env(SINGLEA_TICKET_DOMAIN)%'  # ticket cookie Domain (must be explicitly specified)",
+                        "        #samesite: 'lax'                         # ticket cookie SameSite",
+                        "",
+                        "",
+                        "    authentication:",
+                        "        #sticky_session: false                        # \"true\" allows to prolong the lifetime of user attributes",
+                        "                                                      # without which the session is considered ended",
+                        "        #redirect_uri_query_parameter: 'redirect_uri'",
+                        "",
+                        "",
+                        "    signature:",
+                        "        #request_ttl: 60",
+                        "        #signature_query_parameter: 'sg'",
+                        "        #timestamp_query_parameter: 'ts'",
+                        "        #extra_exclude_query_parameters: [ 'utm' ]  # an array of query parameters which should not be taken during",
+                        "                                                    # signature validation by the \"is_valid_signature()\" expression function",
+                        "",
+                        "",
+                        "    #",
+                        "    # The encryption includes client feature configs encryption and user attributes encryption.",
+                        "    # For both of them encryption keys must be specified in the following parameters as an array",
+                        "    # of sodium keys generated by the \"sodium_crypto_secretbox_keygen()\" function. The first value",
+                        "    # used for encryption and all together they are used for decryption (in turn), which allows",
+                        "    # to organize the key rotation process.",
+                        "    #",
+                        "    # Using the \"base64-array\" environment processor keys might be stored in an environment",
+                        "    # variable and passed into a parameter as follows: '%env(base64-array:csv:CLIENT_KEYS)%'",
+                        "    # (the first env value is converted into an array from a comma separated list, and then",
+                        "    # each key decoded from a base64 string into a raw byte string).",
+                        "    #",
+                        "    # Use the following CLI command to generate a base64-encoded key:",
+                        "    #   php -r 'echo sodium_bin2base64(sodium_crypto_secretbox_keygen(), SODIUM_BASE64_VARIANT_ORIGINAL_NO_PADDING);'",
+                        "    #",
+                        "",
+                        "    encryption:",
+                        "        #client_keys: '%env(base64-array:csv:CLIENT_KEYS)%'  # client feature configs encryption keys",
+                        "        #user_keys: '%env(base64-array:csv:USER_KEYS)%'      # user attributes encryption keys",
+                        "",
+                        "",
+                        "    #",
+                        "    # With help of realm user and SingleA client can choose desired user provider associated with",
+                        "    # the firewall of the same name.",
+                        "    #",
+                        "",
+                        "    realm:",
+                        "        #default: 'main'",
+                        "        #query_parameter: 'realm'",
+                        "",
+                        "",
+                        "    marshaller:",
+                        "        #use_igbinary: true  # use or not igbinary for feature configs serialization;",
+                        "                             # by default it depends on igbinary availability and version",
+                        "",
+                        "",
+                        "    user_attributes:",
+                        "        #use_igbinary: true  # use or not igbinary for user attributes serialization;",
+                        "                             # by default it depends on igbinary availability and version",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "b3bd10b2e93863b8047d758e602b4075258c5993"
+        }
+    }
+}

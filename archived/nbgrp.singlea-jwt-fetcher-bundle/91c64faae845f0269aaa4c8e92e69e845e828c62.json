@@ -1,0 +1,30 @@
+{
+    "manifests": {
+        "nbgrp/singlea-jwt-fetcher-bundle": {
+            "manifest": {
+                "bundles": {
+                    "SingleA\\Bundles\\JwtFetcher\\SingleaJwtFetcherBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                },
+                "post-install-output": [
+                    "  * SingleA JWT Fetcher Bundle is ready."
+                ]
+            },
+            "files": {
+                "config/packages/singlea_jwt_fetcher.yaml": {
+                    "contents": [
+                        "singlea_jwt_fetcher:",
+                        "    #https_only: true  # \"false\" allows fetching payload from a http-based (unsecure) endpoint",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "91c64faae845f0269aaa4c8e92e69e845e828c62"
+        }
+    }
+}
